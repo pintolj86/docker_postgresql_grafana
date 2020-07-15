@@ -14,8 +14,13 @@ Also is possible to setup the postgresql.conf adding another volume in environme
 
 command: postgres -c config_file=/etc/postgresql/postgresql.conf
 
+- ./schema.sql:/docker-entrypoint-initdb.d/schema.sql
+It is the script entry, it will execute if the data is empty. You can set up here the main sql script for DML and DDL operations.
+
 ## Grafana Service:
 user: "$UID:$GID" it's necessary to add the user.
+
+It is very important to remember to add and grant the grafana user which one will access to the db. Check schema.sql for more info,
 
 More info about Grafana config:
 https://grafana.com/grafana/dashboards/893
